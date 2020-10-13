@@ -16,7 +16,6 @@
     "@babel/preset-env": "^7.7.6",
     "@babel/preset-typescript": "^7.7.4",
     "@google/clasp": "^2.3.0",
-    "@line/bot-sdk": "^7.0.0",
     "@types/google-apps-script": "^1.0.7",
     "babel-loader": "^8.0.6",
     "es3ify-webpack-plugin": "^0.1.0",

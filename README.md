@@ -28,29 +28,26 @@ Inject Your functions to `global` variable in `index.ts` like this:
 
 ```ts
 declare const global: {
-  [x: string]: any;
-};
+  [x: string]: any
+}
 
-import { hello } from "./hello";
+global.doGet = (
+  e: GoogleAppsScript.Events.DoGet,
+): GoogleAppsScript.HTML.HtmlOutput => {
+  console.log('GAS got a get request!')
 
-global.hello = () => {
-  hello();
+  const params = JSON.stringify(e)
+  return HtmlService.createHtmlOutput(params)
+}
 
-  hello("GoogleAppsScript");
-};
+global.doPost = (
+  e: GoogleAppsScript.Events.DoPost,
+): GoogleAppsScript.HTML.HtmlOutput => {
+  console.log('GAS got a post request!')
 
-global.doGet = (e: GoogleAppsScript.Events.DoGet) => {
-  console.log("GAS got a get request!");
-
-  const params = JSON.stringify(e);
-  return HtmlService.createHtmlOutput(params);
-};
-
-global.doPost = (e: GoogleAppsScript.Events.DoPost) => {
-  console.log("GAS got a post request!");
-  const params = JSON.stringify(e);
-  return HtmlService.createHtmlOutput(params);
-};
+  const params = JSON.stringify(e)
+  return HtmlService.createHtmlOutput(params)
+}
 ```
 
 Once your development is done, push your codes to GAS project.
@@ -62,3 +59,7 @@ yarn run deploy
 Visit https://script.google.com/d/{your-script-id}/edit, and try to run your code.
 
 Have a nice hack !
+
+## License
+
+This software is released under the MIT License, see [LICENSE](LICENSE)

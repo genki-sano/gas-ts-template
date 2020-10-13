@@ -1,24 +1,21 @@
 declare const global: {
-  [x: string]: any;
+  [x: string]: any
 }
 
-import { hello } from "./hello";
+global.doGet = (
+  e: GoogleAppsScript.Events.DoGet,
+): GoogleAppsScript.HTML.HtmlOutput => {
+  console.log('GAS got a get request!')
 
-global.hello = () => {
-  hello();
-
-  hello("GoogleAppsScript");
+  const params = JSON.stringify(e)
+  return HtmlService.createHtmlOutput(params)
 }
 
-global.doGet = (e: GoogleAppsScript.Events.DoGet) => {
-  console.log("GAS got a get request!");
+global.doPost = (
+  e: GoogleAppsScript.Events.DoPost,
+): GoogleAppsScript.HTML.HtmlOutput => {
+  console.log('GAS got a post request!')
 
-  const params = JSON.stringify(e);
-  return HtmlService.createHtmlOutput(params);
-}
-
-global.doPost = (e: GoogleAppsScript.Events.DoPost) => {
-  console.log("GAS got a post request!");
-  const params = JSON.stringify(e);
-  return HtmlService.createHtmlOutput(params);
+  const params = JSON.stringify(e)
+  return HtmlService.createHtmlOutput(params)
 }
