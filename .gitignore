@@ -1,12 +1,16 @@
-# build
-dist
+# Ignore built ts files
+dist/index.js
 
-# macOS
-*.DS_Store
+# Coverage reports
+coverage
+
+# API keys and secrets
+.env
 
 # Dependency directories
 node_modules
+bower_components
 
-# Google clasp
-.clasp.json
-appsscript.json
+# OS metadata
+.DS_Store
+Thumbs.db
