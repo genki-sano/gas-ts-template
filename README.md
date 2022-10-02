@@ -15,36 +15,28 @@ yarn install
 login with Google.
 
 ```zsh
-yarn run clasp login
+yarn clasp login
 ```
 
 Create new GoogleAppsScript project. (Check [the referrence](https://github.com/google/clasp#create).)
 
 ```zsh
-yarn run clasp create --type standalone --title "Your GAS Project Name" --parentId "1D_Gxyv*****************************NXO7o" --rootDir ./dist
+yarn clasp create \
+    --title "My Script"  \
+    --parentId "1D_Gxyv*****************************NXO7o"  \
+    --rootDir ./dist
 ```
 
-Inject Your functions to `global` variable in `index.ts` like this:
+Inject Your functions to `global` variable in [index.ts](src/index.ts) like this:
 
 ```ts
 declare const global: {
-  [x: string]: any
+  [x: string]: unknown
 }
 
 global.doGet = (
   e: GoogleAppsScript.Events.DoGet,
 ): GoogleAppsScript.HTML.HtmlOutput => {
-  console.log('GAS got a get request!')
-
-  const params = JSON.stringify(e)
-  return HtmlService.createHtmlOutput(params)
-}
-
-global.doPost = (
-  e: GoogleAppsScript.Events.DoPost,
-): GoogleAppsScript.HTML.HtmlOutput => {
-  console.log('GAS got a post request!')
-
   const params = JSON.stringify(e)
   return HtmlService.createHtmlOutput(params)
 }
@@ -53,7 +45,7 @@ global.doPost = (
 Once your development is done, push your codes to GAS project.
 
 ```zsh
-yarn run deploy
+yarn deploy
 ```
 
 Visit https://script.google.com/d/{your-script-id}/edit, and try to run your code.
