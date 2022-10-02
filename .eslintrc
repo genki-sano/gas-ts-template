@@ -8,10 +8,12 @@
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
-    "project": "./tsconfig.json"
+    "sourceType": "module",
+    "tsconfigRootDir": "."
   },
   "plugins": ["@typescript-eslint", "unused-imports"],
   "rules": {
+    "sort-imports": "off",
     "import/order": [
       "error",
       {
@@ -21,5 +23,12 @@
       }
     ]
   },
-  "ignorePatterns": ["dist/index.js", "webpack.config.js"]
+  "settings": {
+    "import/resolver": {
+      "typescript": {
+        "alwaysTryTypes": true
+      }
+    }
+  },
+  "ignorePatterns": ["dist", "webpack.config.js"]
 }
