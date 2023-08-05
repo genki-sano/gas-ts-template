@@ -1,6 +1,5 @@
 const path = require('path')
 const GasPlugin = require('gas-webpack-plugin')
-const Es3ifyPlugin = require('es3ify-webpack-plugin')
 
 module.exports = {
   mode: 'production',
